@@ -21,3 +21,6 @@
 (slurp input-file)
 
 (def sample "")
+
+(defn read-lines [filename]
+  (str/split-lines (slurp input-file)))
