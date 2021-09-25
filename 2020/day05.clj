@@ -1,10 +1,12 @@
+;; Advent of Code 2020
+;; Day 5
+;;
+;; https://adventofcode.com/2020/day/5
+
 (ns aoc2020.core
   (:gen-class)
   (:require [clojure.string :as str]
             [clojure.java.io :as io]))
-
-;; Advent of Code 2020
-;; Day 5
 
 ;; Sample Data
 ; BFFFBBFRRR: row 70, column 7, seat ID 567.
@@ -26,35 +28,48 @@
 ; |256
 ; 512
 
+;; convert a binary number to a decimal integer (just testing)
 (Integer/parseInt "0101100101" 2)  ; = 357
 
+(def input-file "day05-input.txt")
+
+;; When you break down the problem, the F and L characters represent 0 and the B and R charaters represent 1.
 (defn parse-seat-id [seat-id]
   (-> seat-id
-      (str/replace #"F|L" "0")
-      (str/replace #"B|R" "1")
-      (Integer/parseInt 2)))
+      (str/replace #"F|L" "0")     ;; replace all the F and L letters with a 0
+      (str/replace #"B|R" "1")     ;; replace all the B and R letters with a 1
+      (Integer/parseInt 2)))       ;; convert the resulting binary number to a decimal number.
 
-(parse-seat-id "FBFBBFFRLR")
+;; Given a known value, test the parse-seat-id function
+(parse-seat-id "FBFBBFFRLR")  ;; => 357
 
-(with-open [rdr (io/reader "/home/todd/dev/clojure/aoc2020/puzzlefiles/day5.txt")]
+
+;; Part 1 - Find the max ID
+(defn part1 []
+(with-open [rdr (io/reader input-file)]
   (->> rdr
        line-seq
        (map parse-seat-id)
 ;       vec
-       
-       ; Part 1 - Find the max ID   ; = 896
-       ;(apply max) 
-       
-       ; Part 2 - Find own ID  ; = 659
-       sort
-       (partition 2 1)
-       (filter (fn [[x z]] (= (inc x) (dec z))))
-       first  ;sole pair
-       first  ;x
-       inc    ;x+1
-))
+       (apply max) 
+)))
+
+;; Part 2: Find my own ID
+(defn part2 []
+  (with-open [rdr (io/reader input-file)]
+    (->> rdr
+         line-seq
+         (map parse-seat-id)
+         sort
+         (partition 2 1)
+         (filter (fn [[x z]] (= (inc x) (dec z))))
+         first  ;sole pair
+         first  ;x
+         inc    ;x+1
+         ))
+)
 
 
+(part1)   ;; => 896
+(part2)   ;; => 659
 
-(->> "/home/todd/dev/clojure/aoc2020/puzzlefiles/day5.txt"
-     slurp)
