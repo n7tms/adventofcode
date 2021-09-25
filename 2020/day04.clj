@@ -1,10 +1,12 @@
-(ns aoc2020.core
+;; Advent of Code 2020
+;; Day 4
+;;
+;; https://adventofcode.com/2020/day/4
+
+(ns user
   (:gen-class)
   (:require [clojure.string :as str]
             [clojure.walk :as walk]))
-
-;; Advent of Code 2020
-;; Day 4
 
 ;; Sample Data
 ;ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
@@ -22,6 +24,7 @@
 ;iyr:2011 ecl:brn hgt:59in
 ;
 
+(def input-file "day04-input.txt")
 
 (defn split [regex s]
   "swaps string/split parameters of idiomatic ->> threading"
@@ -35,10 +38,17 @@
        walk/keywordize-keys    ; {:a "1", :b "2", :c "3"}
         ))
 
+;; This next line is just used to test the parse-passport function.
 (parse-passport "a:1 b:2 c:3")
 
-(defn valid-passport? [{:keys [byr iyr eyr hgt hcl ecl pid]}]
-  ; part 1 - Required Fields
+
+;; Part 1 defines a valid passport by one having all the required fields.
+(defn valid-passport-part1? [{:keys [byr iyr eyr hgt hcl ecl pid]}]
+  (and byr iyr eyr hgt hcl ecl pid))
+
+
+;; Part 2 puts some constraints on the values of the fields in the passport.
+(defn valid-passport-part2? [{:keys [byr iyr eyr hgt hcl ecl pid]}]
   (and byr iyr eyr hgt hcl ecl pid
 
   ; part 2 - Field Constraints
@@ -68,10 +78,22 @@
        ))
 
 
+(defn part1 []
+  (->> input-file
+       slurp
+       (split #"\n\n")
+       (map parse-passport)
+       (filter valid-passport-part1?)
+       count))
 
-(->> "/home/todd/dev/clojure/aoc2020/puzzlefiles/day4.txt"
-     slurp
-     (split #"\n\n")
-     (map parse-passport)
-     (filter valid-passport?)
-     count)
+(defn part2 []
+  (->> input-file
+       slurp
+       (split #"\n\n")
+       (map parse-passport)
+       (filter valid-passport-part2?)
+       count))
+
+(part1)    ;; => 213
+(part2)    ;; => 147
+
