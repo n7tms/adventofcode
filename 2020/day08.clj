@@ -15,7 +15,7 @@
             [clojure.java.io :as io]))
 
 ;; This is the input data we'll be using.
-(def input-file "day08-input.txt")
+(def input-file "src/working/day08-input.txt")
 
 ;; This slurp line is just for testing. (Can I read the input file?)
 (slurp input-file)
@@ -38,14 +38,59 @@ acc +6")
 (defn read-lines [filename]
   (str/split-lines (slurp filename)))
 
-(def aline "acc -99")
+;(def aline "acc -99")
 
-(let [[_        op       dir   dist]
-      (re-matches #"(\w{3}) ([\+|\-])(\d+)" aline)]
-  {:op op
-   :dir dir
-   :dist dist}
-  )
+(defn read-sample [smpl]
+  (str/split-lines smpl))
+
+(def the-code (read-lines input-file))
+;(def the-code (read-sample sample))
+
+
+(defn parse-line [aline]
+  (let [[_              op          dist]
+;        (re-matches #"(\w{3}) ([\+|\-])(\d+)" aline)
+        (re-matches #"(acc|jmp|nop) ([+-]\d+)" aline)
+        ]
+    {:op op
+;     :dir dir
+     :dist dist}
+    ))  ;; => {:op "acc" :dir "-" :dist "99"}
+
+(parse-line (nth the-code 2))
+
+(defn in? [coll elm]
+  (some #(= elm %) coll))
+
+
+(defn run [idx visited accum]
+  (let [x (parse-line (nth the-code idx))]
+    (println x idx accum)
+      (cond
+        (some? (in? visited idx)) accum
+        (= (get x :op) "acc") (run (inc idx) (cons idx visited) (+ accum (Integer/parseInt (get x :dist))))
+        (= (get x :op) "jmp") (run (+ idx (Integer/parseInt (get x :dist))) (cons idx visited) accum)
+        (= (get x :op) "nop") (run (inc idx) visited accum)
+        ))
+)
+
+;; Part 1
+(run 0 '() 0)  ;; => 1134
+
+
+
+
+
+
+
+
+;; start at location 1
+;; Pass around current location (index) and visited-locations and accumulator.
+;; If the index is ever present in visited-locations, return the accumulator.
+;; (move idx visited accum)
+
+
+
 
 
 

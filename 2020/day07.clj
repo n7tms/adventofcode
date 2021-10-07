@@ -1,12 +1,12 @@
-(ns aoc2020.core
-  (:gen-class)
-  (:require [clojure.string :as str]
-            [clojure.java.io :as io]
-            [clojure.set :as set]))
-
 ;; Advent of Code 2020
 ;; Day 7
 ;; https://adventofcode.com/2020/day/7
+
+(ns aoc2020.core
+  (:gen-class)
+  (:require [clojure.string :as str]
+            [clojure.java.io :as io]))
+
 
 ;; Input file
 (def input-file "day07-input.txt")
@@ -23,9 +23,13 @@ vibrant plum bags contain 5 faded blue bags, 6 dotted black bags.
 faded blue bags contain no other bags.
 dotted black bags contain no other bags.")
 
+;; this is what the data comes in as:
 (def sample-data-short  "light red bags contain 1 bright white bag, 2 muted yellow bags.")
-:output '{"light red" ([1 "bright white"] [2 "muted yellow"])}
 
+;; this is what we want to massage it into.
+;; '{"light red" ([1 "bright white"] [2 "muted yellow"])}
+;; a bag of bags and their quantities
+;; This parse-bag function accomplishes that.
 (defn parse-bag [serialized]
   (let [[[_ _ container] & elements]
         (re-seq #"(?:^|(\d+) )(\w+ \w+) bags?" serialized)]
@@ -34,7 +38,7 @@ dotted black bags contain no other bags.")
                   elements)})
 )
 
-(parse-bag sample-data-short)
+;(parse-bag sample-data-short)
 
 (def database
   (with-open [rdr (io/reader input-file)]
@@ -45,7 +49,7 @@ dotted black bags contain no other bags.")
          
          )))
 
-database
+;database
 
 (defn sub-contains? [container own-color]
   (->> container
@@ -77,4 +81,11 @@ database
 
 (part1 "shiny gold") ;; =>  326
 (part2 "shiny gold") ;; => 5635
+
+
+;; In all honesty, I had a very difficult time wrapping my head around this solution.
+;; Fred Overflow does a great job explaining what he is doing, but I'm still struggling.
+;; Watch this again: https://www.youtube.com/watch?v=oFLZqXMeIpw&list=PLbPrugU2oQ8VURsQdZ6W_iovXRS24UmZQ&index=7
+;;
+
 
