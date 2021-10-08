@@ -15,7 +15,7 @@
             [clojure.java.io :as io]))
 
 ;; This is the input data we'll be using.
-(def input-file "src/working/day08-input.txt")
+(def input-file "day08-input.txt")
 
 ;; This slurp line is just for testing. (Can I read the input file?)
 (slurp input-file)
@@ -63,9 +63,11 @@ acc +6")
   (some #(= elm %) coll))
 
 
+;; This is my recursive/nested implementation. A little slow, but 
+;; it's mine and it works.
 (defn run [idx visited accum]
   (let [x (parse-line (nth the-code idx))]
-    (println x idx accum)
+    ;(println x idx accum)  ;; used this for testing.
       (cond
         (some? (in? visited idx)) accum
         (= (get x :op) "acc") (run (inc idx) (cons idx visited) (+ accum (Integer/parseInt (get x :dist))))
@@ -74,21 +76,12 @@ acc +6")
         ))
 )
 
+
 ;; Part 1
 (run 0 '() 0)  ;; => 1134
 
 
-
-
-
-
-
-
-;; start at location 1
-;; Pass around current location (index) and visited-locations and accumulator.
-;; If the index is ever present in visited-locations, return the accumulator.
-;; (move idx visited accum)
-
+;; Part 2
 
 
 
