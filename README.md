@@ -14,19 +14,19 @@ First introductions to ''slurp'', ''split-lines'', and ''parseInt''
 ''let'' constructs  
 nested ''for'' loops  
 
-== Day 02 ==  
+## Day 02  
 Parsing a text file  
 - re-matches  
 io/reader  
 mapv  
 filter  
 
-== Day 03 ==  
+## Day 03  
 io/reader  
 slurp and split-line  
 a lot of work is done in a single ''let'' block  
 
-== Day 04 ==  
+## Day 04  
 a function to reverse the parameters of ''String/split''  
 thread-last (''->>'')  
 ''walk''  
@@ -35,7 +35,7 @@ thread-last (''->>'')
 ''map''  
 ''filter''  
 
-== Day 05 ==
+## Day 05
 Using ''parseInt'' to convert from binary to decimal  
 thread-first (''->'') and thread-last (''->>'')   
 String/replace  
@@ -48,7 +48,7 @@ partition
 filter  
 ... lots of stuff in this day  
 
-== Day 06 ==  
+## Day 06  
 a function to reverse the parameters of ''String/split''  
 disj  
 set and set/intersection  
@@ -56,7 +56,7 @@ split
 map  
 reduce  
 
-== Day 07 ==  
+## Day 07  
 re-seq  
 let  
 io/reader  
@@ -66,7 +66,7 @@ thread-last (''->>'')
 some  
 anonymous function (fn)  
 
-== Day 08 ==  
+## Day 08  
 (mine: day08.clj)  
 a function to reverse the parameters of ''String/split''  
 split-lines  
@@ -88,7 +88,7 @@ conj
 mapv  
 update-in (to change "jmp --> nop" and "nop --> jmp") (interesting...and a bit confusing!)  
 
-== Day 09 ==  
+## Day 09  
 Long/parseLong  
 mapv  
 split-lines  
@@ -97,6 +97,6 @@ let
 nested ''for'' loop  
 loop cond recur  
 
-== Day 10 ==  
+## Day 10  
 coming soon...  
 
