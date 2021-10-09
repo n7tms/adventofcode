@@ -8,7 +8,8 @@
 ;;  .... https://www.youtube.com/watch?v=61ksBHphf4s&list=PLbPrugU2oQ8VURsQdZ6W_iovXRS24UmZQ&index=9
 
 
-(def input-file "src/working/day09-input.txt")
+;(def input-file "src/working/day09-input.txt")   ;; at CoR
+(def input-file "day09-input.txt")   ;; at home
 
 (def sample
 "35
@@ -48,16 +49,6 @@
 ;;        str/split-lines
 ;;        (mapv parsed)))
 
-(take 5 (drop 1 the-numbers))
-
-(defn sum? [x]
-  (let [addends (take 5 (drop (- x 5) the-numbers))]
-    addends)
-  )
-(nth the-numbers 5)
-
-(sum? 6)
-the-numbers
 
 (defn sum-pair [numbers target]
   (let [n (count numbers)]
@@ -65,9 +56,11 @@ the-numbers
                   j (range (inc i) n)
                   :when (= target (+ (numbers i) (numbers j)))]  [i j]))))
 
+;(sum-pair (subvec the-numbers 1 6) 62)
 
-(sum-pair (subvec the-numbers 1 6) 62)
-
+;; searches a window of n items looking for two that sum to
+;; the n+1 number. This fn returns the first item (number)
+;; that does not have a pair in the window.
 (defn invalid [n numbers]
   (first (for [i (range (- (count numbers) n))
                :let [k (+ i n)
@@ -83,6 +76,11 @@ the-numbers
 
 
 
+;; This is interesting logic to me...
+;; It finds the invalid number and then makes it negative (s).
+;; Then it adds consecutive numbers until the number goes positive
+;; When it finds the right sequence of numbers, it returns a sorted
+;; vector.
 (defn summands [n numbers]
   (loop [i 0
          k 0
@@ -94,13 +92,13 @@ the-numbers
       (sort (subvec numbers i k)))
     ))
 
-
+;; This calls summands to get the sorted vector list.
+;; Once it has it, it adds the first and last number
+;; and returns the answer!
 (defn part2 [n numbers]
   (let [a (first (summands n numbers))
         b (last (summands n numbers))]
     (+ a b)))
-
-
 
 (part2 25 the-numbers)  ;; => 3353494
 
