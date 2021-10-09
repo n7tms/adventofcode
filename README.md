@@ -10,9 +10,9 @@ Because I can't "tag" individual files, this is my attempt to track which days h
 types of clojure constructs, patterns, and examples.
 
 ## Day 01  
-First introductions to ''slurp'', ''split-lines'', and ''parseInt''  
-''let'' constructs  
-nested ''for'' loops  
+First introductions to `slurp`, `split-lines`, and `parseInt`  
+`let` constructs  
+nested `for` loops  
 
 ## Day 02  
 Parsing a text file  
@@ -24,20 +24,20 @@ filter
 ## Day 03  
 io/reader  
 slurp and split-line  
-a lot of work is done in a single ''let'' block  
+a lot of work is done in a single `let` block  
 
 ## Day 04  
-a function to reverse the parameters of ''String/split''  
-thread-last (''->>'')  
-''walk''  
-''case''  
-''re-matches'' and other string and line parsing  
-''map''  
-''filter''  
+a function to reverse the parameters of `String/split`  
+thread-last (`->>`)  
+`walk`  
+`case`  
+`re-matches` and other string and line parsing  
+`map`  
+`filter`  
 
 ## Day 05
-Using ''parseInt'' to convert from binary to decimal  
-thread-first (''->'') and thread-last (''->>'')   
+Using `parseInt` to convert from binary to decimal  
+thread-first (`->`) and thread-last (`->>`)   
 String/replace  
 io/reader  
 apply  
@@ -49,7 +49,7 @@ filter
 ... lots of stuff in this day  
 
 ## Day 06  
-a function to reverse the parameters of ''String/split''  
+a function to reverse the parameters of `String/split`  
 disj  
 set and set/intersection  
 split  
@@ -62,13 +62,13 @@ let
 io/reader  
 line-seq  
 map and apply  
-thread-last (''->>'')  
+thread-last (`->>`)  
 some  
 anonymous function (fn)  
 
 ## Day 08  
 (mine: day08.clj)  
-a function to reverse the parameters of ''String/split''  
+a function to reverse the parameters of `String/split`  
 split-lines  
 let and key mappings  
 re-matches  
@@ -76,13 +76,13 @@ nth
 some  
 cond  
 get  
-a poor example of the use of ''cons''  
+a poor example of the use of `cons`  
 
 (Fred Overflows: day08-fo.clj)  
 re-matches  
 keyword  
-a good example of a ''loop'' construct  
-let and nested bindings ''(let [[op arg] (program idx)]''  
+a good example of a `loop` construct  
+let and nested bindings `(let [[op arg] (program idx)]`  
 case  
 conj  
 mapv  
@@ -93,8 +93,8 @@ Long/parseLong
 mapv  
 split-lines  
 let  
-''for'' loop (:let and :when)  
-nested ''for'' loop  
+`for` loop (:let and :when)  
+nested `for` loop  
 loop cond recur  
 
 ## Day 10  
