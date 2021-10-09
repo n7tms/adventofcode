@@ -9,7 +9,7 @@ I'll work through the 2020 puzzles first, and then go back to 2015 until I've so
 Because I can't "tag" individual files, this is my attempt to track which days have examples of
 types of clojure constructs, patterns, and examples.
 
-== Day 01 ==  
+## Day 01  
 First introductions to ''slurp'', ''split-lines'', and ''parseInt''  
 ''let'' constructs  
 nested ''for'' loops  
