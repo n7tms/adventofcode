@@ -99,5 +99,13 @@ nested `for` loop
 `loop` `cond` `recur`  
 
 ## Day 10  
+`memoize`, `apply`, `partition`  
+`let` and `cond`  
+`sort`, `mapv`  
+thread-last `->>`
+`conj`, `loop`
+
+
+## Day 11  
 coming soon...  
 
