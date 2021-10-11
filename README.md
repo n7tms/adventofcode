@@ -107,5 +107,9 @@ thread-last `->>`
 
 
 ## Day 11  
+Honestly, this was WAY over my head as far as my abilities in clojure.  
+I let Fred "provide" my solution and I moved on to day 12.  
+
+## Day 12  
 coming soon...  
 
