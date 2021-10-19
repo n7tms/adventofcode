@@ -83,8 +83,6 @@ F11")
 
 
 
-
-
 (->> small
      (split #"\s")
      (map #(move %))  ;; ({:dir :F, :mag 10} {:dir :N, :mag 3} {:dir :F, :mag 7} {:dir :R, :mag 90} {:dir :F, :mag 11})
@@ -93,6 +91,7 @@ F11")
      )
 
 (def sample '({:dir :F, :mag 10} {:dir :N, :mag 3} {:dir :F, :mag 7} {:dir :R, :mag 90} {:dir :F, :mag 11}))
+
 (:dir (nth sample 0 ))
 (navigate sample)
 
