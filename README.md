@@ -111,5 +111,22 @@ Honestly, this was WAY over my head as far as my abilities in clojure.
 I let Fred "provide" my solution and I moved on to day 12.  
 
 ## Day 12  
-coming soon...  
+`re-matches`  
+`keyword`  
+`update`  
+`case`  
+
+
+## Day 13
+I managed to solve part 1 completely on my own. I later looked at Fred's code  
+for help in part 2 and to see where I could optimize my part 1 code.   
+I'm a noob to clojure, but IMHO Fred is a genius!  
+`re-seq`  
+`min-key`  
+`interleave`  
+`partition`  
+`remove`  
+
+## Day 14
+Coming soon...
 
