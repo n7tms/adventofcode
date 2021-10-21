@@ -19,6 +19,20 @@
 (part1)  ;; => 280
 
 
+;; After the fact, I found the following "cool" code block at
+;; https://github.com/AxlLind/AdventOfCode2015/blob/main/src/01.clj
+;; (->> large
+;;      frequencies
+;;      vals
+;;      (apply -)
+;;      )
+;; uses frequencies idiom to count the parenthesis...
+;; pulls out just the values (vals)
+;; the apply function does the math, but it returns the wrong floor
+;; because frequencies also found a newline in my input, so I ended
+;; up with 1 less than the correct answer.
+;; Still, a cool implementation.
+
 
 ;; helper function to convert a "(" to a +1 and a ")" to a -1
 ;; to make it easier to add up.
