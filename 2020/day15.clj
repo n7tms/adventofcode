@@ -17,13 +17,6 @@
     0)
 )
 
-;; (def b [0 3 6 0 3 3 1 0 4 0])
-;; (conj b (next-number b))
-;; (if (zero? (inc (.lastIndexOf (butlast b) (int (last b)))))
-;;   0
-;;   (- (count b) (inc (.lastIndexOf (butlast b) (int (last b))))))
-
-;; (next-number b)
 
 (defn part1 [begin]
   (loop [x begin]
@@ -31,7 +24,11 @@
       (last x)
       (recur (conj x (next-number x))))))
 
-(part1 start-seq)  ;; => 276
+(time (part1 start-seq))
+;; => 276 in 93 sec
+;; by my calculations, it will take 15 days to crunch through to a solution for part 2.
+
+
 
 
 
