@@ -62,6 +62,12 @@
 
 
 
+;; part 1 is all me. That was fun.
+;; part 2 caused a great deal of consternation.
+;; I really like this elegant solution: https://github.com/rjray/advent-2020-clojure/blob/master/src/advent_of_code/day22.clj
+
+
+
 
 
 
