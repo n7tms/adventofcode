@@ -80,4 +80,69 @@ forward 2")
 
 
 
+;; ===============================================
+;;     Playing with alternate forms
+;;   (Most of this from Gavin Sinclair)
+;; ===============================================
+
+(reduce (fn [acc x] (+ (* acc 2) x)) [6 3 2 8])
+(reductions (fn [acc x] (+ (* acc 2) x)) [6 3 2 8])
+
+
+(def parse-small
+  (->> small
+       (string/split-lines)
+       (map #(split #" " %))
+       )
+)
+
+(defn part1-again []
+  (let [p (fn [s]
+            (let [[a b] s]
+              {:instr (keyword a) :val (Integer/parseInt b)}))
+        acc-0 {:pos 0, :dep 0}
+        f (fn [acc instruction]
+            (let [{:keys [instr val]} instruction]
+              (case instr
+                :forward (update acc :pos + val)
+                :down    (update acc :dep + val)
+                :up      (update acc :dep - val))))
+        ]
+    
+    (->> parsed
+         (map p)
+         (reduce f acc-0)
+         vals
+         (apply *)
+         )
+    ))
+
+(defn parse-02 [s]
+  (let [[a b] s]
+    {:instr (keyword a) :val (Integer/parseInt b)})  )
+
+
+(defn part2-again []
+  (let [acc-0 {:pos 0, :dep 0, :aim 0}
+        f (fn [acc instruction]
+            (let [{:keys [instr val]} instruction]
+              (case instr
+                :forward (-> acc
+                             (update :pos + val)
+                             (update :dep + (* val (:aim acc))))
+                :down    (update acc :aim + val)
+                :up      (update acc :aim - val))))
+        ]
+    
+    (->> parsed
+         (map parse-02)
+         (reduce f acc-0)
+         ((juxt :pos :dep))
+         (apply *)
+         )
+    ))
+
+(part2-again)
+
+
 
