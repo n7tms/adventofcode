@@ -34,6 +34,12 @@
            (if (> (last x) (first x)) 1 0)
            )))
 
+;; This clever snippet came from Gavin Sinclair (https://www.youtube.com/watch?v=Vp1wK1YS_9Y)
+(->> parsed
+     (partition 2 1)
+     (filter (fn [[a b]] (> b a)))
+     count)
+
 (part1)  ;; => 1696
 
 
@@ -46,4 +52,15 @@
                               (apply + x)))]
            (if (> (last x) (first x)) 1 0))))
 
+
+;; I appied Gavin's algorithm from part 1 and solved part 2.
+(->> parsed
+     (partition 3 1)
+     (map #(reduce + %))
+     (partition 2 1)
+     (filter (fn [[a b]] (> b a)))
+     count
+)
+
 (part2)   ;; => 1737
+
