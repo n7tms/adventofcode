@@ -7,7 +7,11 @@
 
 (def small "")
 
-(def large (slurp input-file ))
+(def large (slurp input-file))
+
+(defn split [regex s]
+  (string/split s regex))
+
 
 
 (defn part1 []
