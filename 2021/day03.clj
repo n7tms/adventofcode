@@ -26,14 +26,20 @@
 (defn to-digits [num]
   (map #(Character/getNumericValue %) num))
 
-;; (defn majority [x]
-;;   (if (> x 500) 1 0))
 
+;; There are 1000 entries in the large dataset.
+;; If there are more than 500 1's then there is
+;; a majority of 1's -- otherwise return a 0.
 (defn majority [x]
-  (if (>= x 6) 1 0))
+  (if (> x 500) 1 0))
+
+;; This majority function is used to against the 
+;; small dataset of 12 entries.
+;; (defn majority [x]
+;;   (if (>= x 6) 1 0))
 
 (def gamma
-  (->> small
+  (->> large
        (string/split-lines)
        (map #(to-digits %))
        (reduce (partial map + ))
@@ -42,7 +48,6 @@
        )
 )
 
-gamma
 
 (defn invert-number [n] (if (= n "1") "0" "1"))
 
@@ -52,7 +57,6 @@ gamma
         complement-bits (string/join bits)]
     (Integer/parseInt complement-bits 2)))
 
-(number-complement 23)
 
 (defn part1 []
   (let [g (Integer/parseInt gamma 2)
@@ -61,6 +65,15 @@ gamma
   )
 
 (part1)  ;; => 3633500
+
+;; ==============================================================
+;; Part 2
+;;
+;; I discovered between part 1 and now that clojure has bit-wise
+;; operations. Who knew! It sure made this second part much 
+;; easier/cleaner.
+;; ==============================================================
+
 
 (def smaller
   (->> small
@@ -74,13 +87,6 @@ gamma
        (map #(Integer/parseInt % 2))
        )  )
 
-(def width 5)
-
-(defn power
-  "raise 'base' to the power of 'exp'"
-  [base exp]
-  (reduce * (repeat exp  base))
-  )
 
 (defn majority2 [mask coll]
   (if (>= (count
@@ -89,8 +95,6 @@ gamma
     1 0)
   )
 
-(def small-mask [16 8 4 2 1])
-(def large-mask [2048 1024 512 256 128 64 32 16 8 4 2 1])
 
 (defn o2 [mask coll]
   (if (zero? (majority2 mask coll))
@@ -111,22 +115,29 @@ gamma
     ))
 
 
-(o2 1 (o2 2 (o2 4 (o2 8 (o2 16 smaller)))))  ;; =>23
-(co2 1 (co2 2 (co2 4 (co2 8 (co2 16 smaller)))))  ;; =>23
 
-
-(o2 1 (o2 2 (o2 4 (o2 8 (o2 16 (o2 32 (o2 64 (o2 128 (o2 256 (o2 512 (o2 1024 (o2 2048 larger))))))))))))  ;; => 1327
-(co2 1 (co2 2 (co2 4 (co2 8 (co2 16 (co2 32 (co2 64 (co2 128 (co2 256 (co2 512 (co2 1024 (co2 2048 larger))))))))))))  ;; =>3429
-
-(* 1327 3429)  ;; => 4550283
-
-
-
-
-(defn part2 []
-
+(defn find-o2 []
+  (loop [x 2048
+         coll larger]
+    (let [newcoll (o2 x coll)]
+      (if (= 1 (count newcoll))
+        (first newcoll)
+        (recur (/ x 2) newcoll))))
   )
 
+(defn find-co2 []
+  (loop [x 2048
+         coll larger]
+    (let [newcoll (co2 x coll)]
+      (if (= 1 (count newcoll))
+        (first newcoll)
+        (recur (/ x 2) newcoll))))
+  )
 
+(defn part2 []
+  (* (find-o2) (find-co2))
+  )
+
+(part2)   ;; => 4550283
 
 
