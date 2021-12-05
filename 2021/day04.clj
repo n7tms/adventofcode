@@ -31,13 +31,18 @@
 ;(def active small)
 (def active large)
 
+;; the numbers are just the first line, split by commas, and converted to integers.
 (def numbers
   (map #(Integer/parseInt %) (string/split (first (string/split-lines active)) #",")))
 
+;; The cards are the remaining lines (rest)....
+;; Partition the remaining lines into groups of six lines, the first is a blank line.
+;; Split each board into a vector of numbers and convert the numbers to integers.
+;; The boards end up being a vector of integers.
 (def cards
-  (for [x (partition 6 (rest (string/split-lines active)))]
+  (for [x (partition 6 (rest (string/split-lines active)))]  ;; interate through the boards (groups of 6 lines)
     (map #(Integer/parseInt %)
-         (rest
+         (rest  ;; the first line of the "board" is a blank line; skip it.
           (string/split (string/join " " x) #"\s+")))
     )
 )
