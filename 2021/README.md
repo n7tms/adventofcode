@@ -56,9 +56,24 @@ Horizontal and vertical lines we pretty straight forward. The diagonals added a 
   - I probably would have solved it in half the time had I found/remembered `frequencies` earlier.  
 - the use of `cond` to determine which direction the line was going.
 
-## Day 06 -   
-**   
-(Solve time: x:xx:xx and x:xx:xx)  
+## Day 06 - Lanternfish   
+*count how many lanternfish are reproduced after 80 and 256 days.*   
+(Solve time: 0:25:00 and 1:38:30)  
+  
+Part1 was very easy. A quick for loop rendered the answer in about 4 seconds.  
+However, the answer to part2 was in the trillions. A for loop wasn't going to cut it!  
+I decided to modify all the code to keep track of how many fish were in each category or bucket, ie. the number of fish with 1 day before birthing, fish with 4 days before birthing, etc. It proved to be VERY efficient and FAST -- about 0.6 msec. to evaluate 256 days.  
+- `hash-map` to keep track of the number of fish in each category/bucket   
+- `(apply + (vals bucks))` to calculate the total number of fish produced.   
+  
+This was my best ranking day so far on the leaderboard -- 7619 on part 1.  
+
+## Day 07 -   
+**  
+(Solve Time: )  
+  
+
+
   
 
 
