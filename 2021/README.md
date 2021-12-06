@@ -42,11 +42,13 @@ custom `split` function...reverses arguments
 - nested `for` loops  
 - Also `some`, `partition`, and `reduce`.  
 - I'm quite proud of my `winning-col?` function!  
+   
 Part2 really stumped me for a while. I found the last card, but the score was wrong. Then I realized that I still needed to "play" that card until it became a winning card. I ended up passing just the last card to my part1 code to let it play out.  
 
 ## Day 05 - Hydrothermal Venture  
 *map out lines of thermal vents*  
 (Solve time: 2:08:08 and 0:47:07)  
+  
 Given a slightly more complex input `0,9 -> 5,9`, determine how many points the lines intersect.  
 Horizontal and vertical lines we pretty straight forward. The diagonals added a little complexity.     
 - parsed the input using `re-matches`  
@@ -54,9 +56,10 @@ Horizontal and vertical lines we pretty straight forward. The diagonals added a 
   - I probably would have solved it in half the time had I found/remembered `frequencies` earlier.  
 - the use of `cond` to determine which direction the line was going.
 
+## Day 06 -   
+**   
+(Solve time: x:xx:xx and x:xx:xx)  
+  
 
 
 
-First introductions to `slurp`, `split-lines`, and `parseInt`  
-`let` constructs  
-nested `for` loops  
