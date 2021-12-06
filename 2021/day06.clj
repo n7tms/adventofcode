@@ -1,8 +1,8 @@
 (ns aoc2021
   (:require [clojure.string :as string]))
 
-;; TODO: change 00 to current day number
-(def day "00")
+
+(def day "06")
 (def input-file (str "day" day "-input.txt"))
 
 (def small "")
@@ -28,5 +28,6 @@
 
 
 (println "Part1: " (part1) "\nPart2: " (part2))
+
 
 
