@@ -9,8 +9,8 @@
 
 (def large (slurp input-file))
 
-(def active small)
-;(def active large)
+;(def active small)
+(def active large)
 
 (defn split [regex s]
   (string/split s regex))
@@ -86,3 +86,10 @@
 
 (run-tests)
 
+
+;; ======= After notes ====================================================
+;; My part2 takes about 45 seconds to run... to brute force an answer. BAD!
+;; the median (/ count 2) is the optimum number
+;; so sum a sequence, 1+2+3+...+x, use (/ (* x (inc x)) 2)
+;; take a look at Jonathan Paulson video for some deeper analysis.
+;; https://www.youtube.com/watch?v=I_GB8DMGvVA
