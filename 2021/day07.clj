@@ -2,7 +2,7 @@
   (:require [clojure.string :as string]))
 
 ;; TODO: change 00 to current day number
-(def day "00")
+(def day "07")
 (def input-file (str "day" day "-input.txt"))
 
 (def small "")
