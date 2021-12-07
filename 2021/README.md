@@ -68,9 +68,21 @@ I decided to modify all the code to keep track of how many fish were in each cat
   
 This was my best ranking day so far on the leaderboard -- 7619 on part 1.  
 
-## Day 07 -   
+## Day 07 - The Treachery of Whales   
+*find the minimun number of moves to align the crabs*  
+(Solve Time: 0:28:00 and 0:58:00)  
+  
+Again, fairly straight forward and easy puzzles. (I'm not complaining!)  
+Essentially, I iterated over a list of integers `map`ping the difference to various positions and then `sort`ing and taking the lowest (`first`) number.  
+I knew I could use the same algorithm in part2, but was stumped when my answer kept coming up wrong. Then I discovered, because I was iterating over the list of crab positions/fuels, that there were some positions/fuels missing from the list -- which just happened to be the optimum shift. So I adjusted the part2 algorithm to iterate over a `range` from 0 to the max fuel number...so as not to miss any numbers.  
+- `for`, `sort`, `range`, `map`, `reduce`, `cond`.  
+- I attempted to use `deftest` to report correct evaluations. Pseudo-successful.  
+
+## Day 08 -    
 **  
-(Solve Time: )  
+(Solve Time: x:xx:xx and x:xx:xx)  
+
+
   
 
 
