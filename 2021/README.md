@@ -78,9 +78,21 @@ I knew I could use the same algorithm in part2, but was stumped when my answer k
 - `for`, `sort`, `range`, `map`, `reduce`, `cond`.  
 - I attempted to use `deftest` to report correct evaluations. Pseudo-successful.  
 
-## Day 08 -    
-**  
-(Solve Time: x:xx:xx and x:xx:xx)  
+## Day 08 - Seven Segment Search    
+*determine the correct 7-seg display, dispite random wire connections*  
+(Solve Time: 0:48:00 and x:xx:xx)  
+  
+Part 1 was relatively easy for me. The most difficult thing was parsing the text. Once I had it in, it was fairly trivial to determine the 1, 4, 7, and 8 digits.  
+  
+Part 2 took me out! I could not wrap my head around any form of logic that would get me to the end. I borrowed a solution from tcsullivan (https://github.com/tcsullivan/advent-of-code/tree/master/day8).  
+  
+- `as->`, `subvec`, `comp`, `assoc`, and others that I need to understand better.  
+-   
+
+## Day 09 -   
+**
+(Solve time:   )   
+
 
 
   
