@@ -114,6 +114,11 @@ It took me just over 90 minutes to solve day 10. Once I got my `stack` working a
   
 I had some issues keeping the strings *strings*. Some operations (e.g. `(first "(}(<")` would return a character `\(` rather than a string `"("`. It might have simplified the code to just deal with the characters, but I'm not very experienced with those operations...yet.  
   
+- Notes about vectors as a stack  
+  - `pop`, `conj`, `peek`  
+  
+Update: I went back and implemented day10 using vectors and `peek`, `pop`, and `conj`. The execution time was slightly improved; the readability (IMO) is slightly improved; but the overall flow of the program is the same.  
+    
 ## Day 11 -    
 **   
 (Completion time: 0:00 and 0:00)  *<= just hrs:mins from now on*  

@@ -175,7 +175,9 @@
             (if (not (nil? basin))
               ;; if this point is in a basin, then check to see if the
               ;; neighbors are too. Check-neighbors should return a list.
+              ;; CHANGE `replace` WITH (assoc basins basin (check-n...)) (requires vectors!
               (recur (inc idx) (replace-basin basin basins (check-neighbors idx (nth basins basin))))
+;              (recur (inc idx) (assoc basins basin (check-neighbors idx (nth basins basin))))
               ;; if this point is not in a basin, then create a new basin
               ;;with this point in it.
               (recur (inc idx)  (conj basins (check-neighbors idx (conj '() idx))))
