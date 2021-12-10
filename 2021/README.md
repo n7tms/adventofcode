@@ -90,7 +90,7 @@ Part 2 took me out! I could not wrap my head around any form of logic that would
 -   
 
 ## Day 09 - Smoke Basin  
-*navigate a series of hydrothermal vents and basins*
+*Navigate a series of hydrothermal vents and basins*
 (Solve time: 0:59:00 and >24hrs)   
   
 Part1 was relatively easy. I used a series of functions to check surrounding digits for higher numbers.   
@@ -102,15 +102,16 @@ Part2 took me out. I could navigate the matrix of numbers, but there were numero
  911111999  
 
 The 3 is not discovered as part of the basin it belongs in.  
-
-I workd
+  
 I worked for over 24 hours before I finally caved and looked on reddit for a c++ solution that I could compile, get an answer and put day 9 to bed for a while.  
-I want to revisit all the days again to improve and learn from the code.  
+I want to revisit all the days anyway to improve and learn from the code.  
   
 ## Day 10 - Syntax Scoring  
 *Given a series of open and closed brackets, find the broken sequence and complete the incomplete sequences.*  
 (Solve time: 1:11:00 and 0:27:00)    
+  
 It took me just over 90 minutes to solve day 10. Once I got my `stack` working and remembered to check for all cases of brackets, things went very smoothly. The extra work in part1 paid off in part2.  
+  
 I had some issues keeping the strings *strings*. Some operations (e.g. `(first "(}(<")` would return a character `\(` rather than a string `"("`. It might have simplified the code to just deal with the characters, but I'm not very experienced with those operations...yet.  
   
 ## Day 11 -    
