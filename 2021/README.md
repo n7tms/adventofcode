@@ -133,6 +133,22 @@ In my github, you'll find a couple of clojure solutions from https://www.reddit.
 But the intriging one to me is the bash script from https://www.reddit.com/user/Steinrikur/.  
 
 My mind is beat. Going to bed. I'll tackle day 12 tomorrow.... *sigh*.  
+  
+## Day 12 - Passage Pathing  
+*given a set of edges from a "graph" map all the possible routes from start to end*  
+(Completion time: > 04:00)  
+  
+This is classic graphing DFS. But, do you know how long it has been since I've coded that stuff ?? A while!   
+I spent a couple hours researching graphing algorithm -- found a good one in Loom. Tried to implement it. Failed!  
+  
+I threw that code away -- literally -- and tried to works something up on my own. Again, bogged down in the lanuage. (I keep reminding my selve that I'm learning Clojure because I want to!)  
+  
+The code posted here in github is from RedPenguin101 (https://github.com/RedPenguin101/aoc2021/blob/main/day12.md). I don't think it is the most optimized algorithm -- it took about 11 seconds to solve part 2 -- but his style makes it the most readable to me and I'll learn something about Clojure from him. Thank you.  
+  
+## Day 13 -  
+**  
+(Completion time: )  
+
 
   
 
