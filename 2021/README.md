@@ -119,9 +119,21 @@ I had some issues keeping the strings *strings*. Some operations (e.g. `(first "
   
 Update: I went back and implemented day10 using vectors and `peek`, `pop`, and `conj`. The execution time was slightly improved; the readability (IMO) is slightly improved; but the overall flow of the program is the same.  
     
-## Day 11 -    
-**   
+## Day 11 - Dumb Octopus    
+*count the number of energy flashes from 100 octupi*   
 (Completion time: 0:00 and 0:00)  *<= just hrs:mins from now on*  
+  
+OUCH!! I worked on this problem for over 8 hours. I think I have a sound algorithm, but I cannot get it implemented in Clojure. The lack of mutable variables is a serious source of confusion for me.  
+  
+I am so close on part1. Using the sample input, I am generating 33 instead of 35 flashes and I'm not sure why.  
+   
+In my github, you'll find a couple of clojure solutions from https://www.reddit.com/user/theronic/ and https://curls.it/2s2rZ.
+  
+  
+But the intriging one to me is the bash script from https://www.reddit.com/user/Steinrikur/.  
+
+My mind is beat. Going to bed. I'll tackle day 12 tomorrow.... *sigh*.  
+
   
 
 

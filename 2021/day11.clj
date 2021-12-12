@@ -89,37 +89,45 @@
 (defn flashable [e]
   (remove nil?
           (for [x (range (count e))]
-            (if (>= 10 (nth e x)) x))))
+            (if (>= (nth e x) 10) x))))
 
 
 (defn flash-pos [pos energies]
   (loop [vt (valid-targets pos)
          e (return-to-z energies vt)]
-    (let [fvt (first vt)]
-      (if (empty? vt) e
-          (if (= 0 (nth e fvt))
-            (recur (rest vt) e)
-            (recur (rest vt) (assoc e fvt (inc (nth e fvt)))))
-)
-)))
 
+    (if (empty? vt) e
+        (if (= 0 (nth e (first vt)))
+          (recur (rest vt) e)
+          (recur (rest vt) (assoc e (first vt) (inc (nth e (first vt))))))
+        )
+))
 
-
-(defn flash [e]
-  (loop [e1 e]
-    (if (> (count (filter #(> % 9) e1)) 0)
+(defn flash [e flashable]
+  (loop [e1 e
+         once 0]
+    (if (or (zero? once) (> (count (filter #(> % 9) e1)) 0))
       (recur
-       (loop [f (flashable e1)
+       (loop [f flashable
               new-e e1]
          (if (empty? f)
            new-e
-           (recur (rest f) (flash-pos (first f) new-e)))
-         ))
+           (recur (rest f) (flash-pos (first f) new-e))))
+       1)
       e1))
 )
+(def once 0) 
+(def e (increase-energy (increase-energy energies))) 
+(def f (flashable e)) 
+(def rtz (return-to-z e f))
+(flash-pos (first f) rtz)
+(def vt (valid-targets 2))
+(def s1 (return-to-z rtz vt))
 
+(flash rtz f)
+(count (filter #(> % 9) rtz))
 
-
+;(def vt (valid-targets  ))
 
 (defn part1 [goal]
   (loop [steps   0
@@ -128,10 +136,9 @@
     (if (>= steps goal)
       (do (println e)
           flashes)
-      (let [oct (->> e
-                     (increase-energy)
-                     (flash)
-                     )]
+      (let [ie (increase-energy e)
+            f  (flashable ie)
+            oct (flash ie f)]
         (recur (inc steps)
                (+ flashes (count (filter #(= % 0) oct))) ;flashes
                oct)
