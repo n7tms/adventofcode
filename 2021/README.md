@@ -145,9 +145,24 @@ I threw that code away -- literally -- and tried to works something up on my own
   
 The code posted here in github is from RedPenguin101 (https://github.com/RedPenguin101/aoc2021/blob/main/day12.md). I don't think it is the most optimized algorithm -- it took about 11 seconds to solve part 2 -- but his style makes it the most readable to me and I'll learn something about Clojure from him. Thank you.  
   
-## Day 13 -  
-**  
-(Completion time: )  
+## Day 13 - Transparent Origami   
+*fold transparent paper to align dots and generate letters.*  
+(Completion time: ~3 hours total)  
+  
+This was a fun one. I love it when they are within my sphere of capability. The input was in two parts: the coordinates and fold instructions.   
+The first part...just count the number of visible dots after one fold.  The second part...what eight letters are generated after the folds are complete?  
+The fold functions gave me a bit of an issue -- but only because I wasn't paying attention. For example, the sample folds first on the Y axis in the middle of the page. I assumed that mine also folded first on the Y axis. But it continually produced the wrong result. Then I realized that 655 was not in the middle of the paper. So I adjusted my fold functions to handle non-symmetrical folds. Still not correct. Then I realized that my input's first fold was on the x-axis. Now I can solve part 1.  
+  
+For part 2, -- my quick and dirty solution, was to export the points to an Excel spreadsheet and use that program to generate a scatter plot of the points. It worked as planned, but it took me the better part of an hour to massage the data and generate the plot.  
+In my final code iteration, I employed an external library, Incantor, which very slickly plots the points. In fact, I was able to produce a solution in about 10 minutes. (I wish I had started there last night!)  
+- use of `re-matches` and `parse` functions to parse the disparate data types in the input
+- of course, Incantor's `scatter-plot` and `view` functions.  
+Note: The code posted here in github is not part of a Leiningen project. So it will not run without specifying the Incantor dependency. [incanter "1.9.3"]  
+  
+## Day 14 -   
+**   
+(Completion time:  )  
+  
 
 
   
