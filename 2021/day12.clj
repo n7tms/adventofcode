@@ -6,13 +6,26 @@
 ;;
 ;; (rearranged and formatted to my style)
 
+(def small "start-A
+start-b
+A-c
+A-b
+b-d
+A-end
+b-end")
+
+(def large (slurp "day12-input.txt"))
+
+;; creates a list of nodes and their reverse, ie. A-c and c-A ["A" "c"] ["c" "A"]
 (def graph
   (mapcat #((juxt identity reverse) (str/split % #"-"))
-          (str/split-lines (slurp "day12-input.txt"))))
+          (str/split-lines small)))
 
+;; returns a hash map of the nodes accessible from the given "node"
 (defn children [graph node]
   (set (keep #(when (= node (first %)) (second %)) graph)))
 
+;; returns true if the given string is all lowercase letters
 (defn lower-case? [string]
   (= (str/lower-case string) string))
 
@@ -32,12 +45,13 @@
                (next-fn graph (first path) path)))))
 
 
-(time (count (all-paths with-no-lc-revisits graph)))
+;(time (count (all-paths with-no-lc-revisits graph)))
   ;; Elapsed time: 297 msecs
   ;; => 3292
 
 
-(time (count (all-paths with-one-lc-revisit graph)))
-  ;; => Elapsed time: 11596 msecs
-  ;; => 89592
+;(time (count (all-paths with-one-lc-revisit graph)))
+
+;; => Elapsed time: 11596 msecs
+;; => 89592
   
