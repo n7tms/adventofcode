@@ -172,6 +172,8 @@ The solutions rendered very quickly: part1 => 116 msec; part2 => 563 msec
 - I converted the pairs to keywords and passed keywords around.  
 - `re-matches`  
   
+Note: day14.clj contains my original part1 code. I wanted to preserve it as I worked on the part2 bucket algoritm. In the end, I decided to keep both iterations. The new/bucket versions of both parts is in day14b.clj.  
+  
 # Day 15 -    
 **  
 (Completion time: )  

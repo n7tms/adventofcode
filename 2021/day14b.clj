@@ -145,3 +145,6 @@ combines the values into a set #{} and associates the set with a single key"
 
 
 
+;; When you get around to review/revising/optimizing this code, take a look
+;; at what this guy did: https://github.com/listba/advent-of-code/blob/master/2021/clojure/src/aoc_2021/days/14.clj
+;;
