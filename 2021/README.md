@@ -174,9 +174,19 @@ The solutions rendered very quickly: part1 => 116 msec; part2 => 563 msec
   
 Note: day14.clj contains my original part1 code. I wanted to preserve it as I worked on the part2 bucket algoritm. In the end, I decided to keep both iterations. The new/bucket versions of both parts is in day14b.clj.  
   
-# Day 15 -    
-**  
-(Completion time: )  
+# Day 15 - Chiton   
+*plot a safe path through the chiton on the cave walls*  
+(Completion time: part1 ~1:30; part2 pending)  
+This is classic Dijkstra shortest path. I used the same initial data structure (vector) as day 11 and converted it to a graph.  It took about 13 seconds to render a solution to part 1. But it did!  
+Part 2 will be the same algorithm, but I am having trouble expanding the size of the "cave". I can't seem to wrap my old brain around that one.  
+  
+In hindsight, I'm wondering if a list of vectors would be a better model? Each vector in the list would represent a row in the table. Then I could use traditional [col,row] addressing...instead of having to extrapolate the correct index each time I want to access an element.   
+- `find-neighbors` function to determine valid neighbors to the point in question.    
+- `build-graph` to convert the initial parsed vector into a graph for Dijkstra's use.  
+  
+# Day 16 -    
+**   
+(Completion time:  )   
    
 
 
