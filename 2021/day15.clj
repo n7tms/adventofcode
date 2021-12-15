@@ -16,10 +16,16 @@
 1293138521
 2311944581")
 
+(def smaller "123
+456
+789")
+
+
 (def large (slurp input-file))
 
+(def active smaller)
 ;(def active small)
-(def active large)
+;(def active large)
 
 (defn split [regex s]
   (string/split s regex))
@@ -36,8 +42,8 @@
       (map #(Integer/parseInt %) o)))))
 
 
-(def width 100)
-(def height 100)
+(def width 3)
+(def height 3)
 
 
 
@@ -57,14 +63,6 @@
 ;(for [d dirs] d)
     ))
 
-
-
-(def demo-graph {:red    {:green 10, :blue   5, :orange 8},
-                 :green  {:red 10,   :blue   3},
-                 :blue   {:green 3,  :red    5, :purple 7},
-                 :purple {:blue 7,   :orange 2},
-                 :orange {:purple 2, :red    2}})
-;                 :blue   {:green 3,  :red    5, :purple 7},
 
 
 
@@ -125,7 +123,8 @@
 
 
 
-(println "Part1: " (part1) "\nPart2: " (part2))
+;(println "Part1: " (part1) "\nPart2: " (part2))
+
 
 
 ;; (use 'clojure.test)
@@ -136,3 +135,55 @@
 ;; (run-tests)
 
 ;; Algorithm here: http://www.loganlinn.com/blog/2013/04/22/dijkstras-algorithm-in-clojure/
+
+
+
+parsed-input
+
+
+;; 1 2 3   2 3 4   3 4 5
+;; 4 5 6   5 6 7   6 7 8
+;; 7 8 9   8 9 1   9 1 2
+;;
+;; 2 3 4   3 4 5   4 5 6
+;; 5 6 7   6 7 8   7 8 9
+;; 8 9 1   9 1 2   1 2 3
+;;
+;; 3 4 5   4 5 6   5 6 7
+;; 6 7 8   7 8 9   8 9 1
+;; 9 1 2   1 2 3   2 3 4
+
+(defn init-matrix [newsize-c newsize-r]
+  (repeat (* newsize-c newsize-r) 0))
+
+(def old-matrix parsed-input)     ;; old matrix
+(def new-matrix (init-matrix 6 6)) ;; new matrix, init'd with 0's
+;(def new-matrix [1 2 3 0 0 0 4 5 6 0 0 0 7 8 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+(loop [col 0
+       row 0
+       idx (+ (* row width) col)
+       n-m new-matrix]
+  (if (= col width) n-m
+      (update n-m idx (inc (nth old-matrix idx))))
+  
+  )
+
+
+
+;; fwiw: https://github.com/theronic/advent-of-code/blob/main/src/advent_of_code/year2021/day15.clj
+
+;; def make_big(aoc_input):
+;;     h,w=len(aoc_input),len(aoc_input[0])
+;;     for i in range(h):
+;;         for p in range(w,5*w):
+;;             aoc_input[i].append(aoc_input[i][p-w]%9+1)
+;;     for i in range(h,5*h): 
+;;         aoc_input.append([aoc_input[i-h][p]%9+1 for p in range(5*w)])
+
+(defn make-bigger [parsed-input]
+  (for [r (range height)
+        c (range width (* 5 width))]
+    (update parsed-input i (inc (mod (- c width) 9))))
+)
+
+()
