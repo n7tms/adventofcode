@@ -159,9 +159,28 @@ In my final code iteration, I employed an external library, Incantor, which very
 - of course, Incantor's `scatter-plot` and `view` functions.  
 Note: The code posted here in github is not part of a Leiningen project. So it will not run without specifying the Incantor dependency. [incanter "1.9.3"]  
   
-## Day 14 -   
-**   
-(Completion time:  )  
+## Day 14 - Extended Polymerization    
+*transform a list of elements/polymers with the given map*   
+(Completion time:  a long time! (> 5 hours) )  
+  
+This problem is reminiscient of day 6 and the lantern fish. The transformations grow exponentially. I brute forced the 10 step transformation in part 1 and the solution rendered in about 3 seconds. Using the same algorithm, I let part 2 (40 steps) spin for about 5 minutes before I decided I needed to do something different. It turns out that some cursory investigation revealed that each additional step was taking twice as long as the step before. At this rate, it would have taken about 25 days to produce an answer to step 2.  
+So I started thinking about how I solved the lantern fish problem: buckets!  
+I created a hash-map of all of the possible polymer pairs -- 100 pairs, to be exact. I iterated through this hash-map, looking at the pairs that had been generated in the previous step, and added their transformation pairs to a new hash-map...passing this new hash-map to the next step.  
+After the steps were complete, I assigned the count to the first letter in each pair and added one more for the element (letter) on the end of the original string.  
+The solutions rendered very quickly: part1 => 116 msec; part2 => 563 msec  
+- `key`, `val`, `keyword`, hash-maps, `into {}`  
+- I converted the pairs to keywords and passed keywords around.  
+- `re-matches`  
+  
+# Day 15 -    
+**  
+(Completion time: )  
+   
+
+
+
+
+
   
 
 
