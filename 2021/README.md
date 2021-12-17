@@ -184,9 +184,25 @@ In hindsight, I'm wondering if a list of vectors would be a better model? Each v
 - `find-neighbors` function to determine valid neighbors to the point in question.    
 - `build-graph` to convert the initial parsed vector into a graph for Dijkstra's use.  
   
-# Day 16 -    
+# Day 16 - Packet Decoder    
 **   
 (Completion time:  )   
+still pending completion....   
+
+# Day 17 - Trick Shot  
+*shoot a probe into a target area*  
+(Completion time: ~1:20 and ~0:05)   
+I created two functions: `in-target?` to determine if the current location was within the specified coordinates, and `next-step` to advance the probe according to the given rules.  
+From there, it was just a matter of iterating through a sufficiently large set of velocities to get the answer. In part1, what is the maximum height we can achieve and still hit the target. In part2, how many different trajectories actually hit the target area.  
+- (nothing fancy to see here today...)  
+  
+As a side note, this is the best ranking I've achieve on either parts so far this year -- 5428 and 4621.  
+  
+# Day 18 -   
+**   
+(Completion time: )   
+  
+
    
 
 
