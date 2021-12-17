@@ -368,3 +368,36 @@
 ;; Example usage: (graph-bfs graph :A)
 
 ;; ====================================================================
+
+
+;; ====================================================================
+;;         Matrix Functions
+;;
+;; Generate a list of neighbors
+(defn neighbors
+  "args: size => int, size of matrix; assumes square, e.g. 3x3, 4x4, etc.
+         yx   => vec, coords of target cell, e.g. [1 1].
+   This implementation returns all 8 neighbors, but could easily be modifed
+   to only return the 4 adjacent and not diagonals."
+  ([size yx] (neighbors [[-1 0] [-1 1] [1 0] [1 1] [0 -1] [1 -1] [0 1] [-1 -1]]
+                        size
+                        yx))
+  ([deltas size yx]
+   (filter (fn [new-yx]
+             (every? #(< -1 % size) new-yx))
+           (map #(vec (map + yx %))
+                deltas))))
+
+;; usage:
+;; (neighbors 3 [1 1]) => ([0 1] [0 2] [2 1] [2 2] [1 0] [2 0] [1 2] [0 0]) 
+
+;; given: 
+;; (def matrix
+;;   [[1 2 3]
+;;    [4 5 6]
+;;    [7 8 9]])
+;;
+;; The following form returns the values in the cells of the neighbors of [2 2]
+;; (map #(get-in matrix %) (neighbors 3 [2 2]))  => (6 8 5)
+
+;; ====================================================================
