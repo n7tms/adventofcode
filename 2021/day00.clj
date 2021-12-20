@@ -1,5 +1,6 @@
 (ns aoc2021
-  (:require [clojure.string :as string]))
+  (:require [clojure.string :as string]
+            [clojure.test :as test]))
 
 ;; TODO: change 00 to current day number
 (def day "00")
@@ -33,10 +34,10 @@
 (println "Part1: " (part1) "\nPart2: " (part2))
 
 
-(use 'clojure.test)
+
 (deftest sample-data-test
-  (test/is (= (part1) xx))
-  (test/is (= (part2) xx)))
+  (test/is (= (part1) 0))
+  (test/is (= (part2) 0)))
 
 (run-tests)
 
