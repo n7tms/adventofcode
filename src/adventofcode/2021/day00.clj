@@ -1,10 +1,10 @@
-(ns aoc2021
+(ns adventofcode
   (:require [clojure.string :as string]
             [clojure.test :as test]))
 
 ;; TODO: change 00 to current day number
 (def day "00")
-(def input-file (str "day" day "-input.txt"))
+(def input-file (str "src/adventofcode/2021/day" day "-input.txt"))
 
 (def small "")
 
