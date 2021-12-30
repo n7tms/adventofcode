@@ -1,6 +1,5 @@
 (ns adventofcode
-  (:require [clojure.string :as str]
-            [clojure.test :as test]))
+  (:require [clojure.string :as str]))
 
 (def day "22")
 (def input-file (str "src/adventofcode/2021/day" day "-input.txt"))
@@ -92,17 +91,4 @@ on x=10..10,y=10..10,z=10..10")
 
 
 (part-2 active)   ;; => 1304385553084863
-
-
-
-
-;(println "Part1: " (part1) "\nPart2: " (part2))
-
-
-
-;; (deftest sample-data-test
-;;   (test/is (= (part1) 0))
-;;   (test/is (= (part2) 0)))
-
-;; (run-tests)
 
