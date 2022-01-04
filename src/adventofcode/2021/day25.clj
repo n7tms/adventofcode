@@ -1,6 +1,6 @@
 (ns adventofcode
   (:require [clojure.string :as string]
-            [clojure.test :as test]))
+))
 
 ;; TODO: change 00 to current day number
 (def day "25")
@@ -35,13 +35,33 @@ v.v..>>v.v
 (def input
   (->> active
        string/split-lines
-       (map #(split #"" %))))
+;       (map #(split #"" %))
+       (map #(char-array %))
+       (map #(chars %))
+       (map #(seq %))))
 
-(defn move-east [[rows cols]]
-  (get)
-  )
 
-(defn move-south [row col]
+(defn move-east [row]
+
+  (let [fst (first row)
+        lst (last row)]
+    (loop [row    row
+           newrow []]
+      (if (empty? row)
+        (if (and (= fst \.) (= lst \>))
+          (conj (vec(cons lst (butlast (rest newrow)))) \.) 
+          newrow)
+        (let [cur    (first row)
+              nxt    (second row)]
+
+          (if (and (= cur \>) (= nxt \.))
+            (recur (rest (rest row)) (conj newrow \. \>))
+            (recur (rest row)        (conj newrow cur))))))))
+
+;; (move-east [\> \. \. \. \v \. \. \v \. \>])
+
+
+(defn move-south [region]
   )
 
 
@@ -65,7 +85,8 @@ v.v..>>v.v
 
 
 
-(println "Part1: " (part1) "\nPart2: " (part2))
+;(println "Part1: " (part1) "\nPart2: " (part2))
+
 
 
 
