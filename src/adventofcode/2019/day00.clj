@@ -1,6 +1,5 @@
 (ns adventofcode
-  (:require [clojure.string :as string]
-            [clojure.test :as test]))
+  (:require [clojure.string :as string]))
 
 ;; TODO: change 00 to current day number
 (def day "00")
@@ -35,9 +34,4 @@
 
 
 
-(deftest sample-data-test
-  (test/is (= (part1) 0))
-  (test/is (= (part2) 0)))
-
-(run-tests)
 
