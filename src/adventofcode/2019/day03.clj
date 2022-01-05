@@ -1,7 +1,6 @@
 (ns adventofcode
   (:require [clojure.string :as string]))
 
-;; TODO: change 00 to current day number
 (def day "03")
 (def input-file (str "src/adventofcode/2019/day" day "-input.txt"))
 
@@ -33,19 +32,9 @@ U62,R66,U55,R34,D71,R55,D58,R83")
     )  )
 
 
-;; start pos = [0 0]
-;; read first instr
-;; . U3  => [1 0] [2 0] [3 0]
-;; current pos = [3 0]
-;; read next instr
-;; . L2  => [3 -1] [3 -2]
-;; current pos = [3 -2]
-;; 
-
 (defn make-points [pos offset] 
   (let [[pr pc] pos
         [or oc] offset]
-
     (cond
       (and (zero? or) (> oc 0)) (for [i (range (inc pc) (+ pc oc 1))]     [pr i])  ;; right
       (and (zero? or) (< oc 0)) (for [i (range (dec pc) (+ pc oc -1) -1)] [pr i])  ;; left
@@ -71,8 +60,6 @@ U62,R66,U55,R34,D71,R55,D58,R83")
           )))))
 
 
-
-
 (def intersections
   (let [x 
         (partition 2 2
@@ -84,27 +71,21 @@ U62,R66,U55,R34,D71,R55,D58,R83")
 
 
 
-
 (defn man-dist [[x y]]
   (+ (Math/abs x) (Math/abs y)))
 
 
-
-
-
-
-
-
 (defn part1 []
   (first (sort (map #(man-dist %) (keys intersections))))
-  )
+  )  ;; => 1519
 
 
 
 
 (defn part2 []
-
-  )
+;; I "borrowed" python code to solve part2.
+  
+  )  ;; => 14358
 
 
 (println "AoC 2019 - Day 03")
