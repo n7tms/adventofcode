@@ -14,12 +14,14 @@ G)H
 D)I
 E)J
 J)K
-K)L")
+K)L
+K)YOU
+I)SAN")
 
 (def large (slurp input-file))
 
-(def active small)
-;(def active large)
+;(def active small)
+(def active large)
 
 (defn split [regex s]
   (string/split s regex))
@@ -36,69 +38,65 @@ K)L")
                    string/split-lines
                    (map parse-orbits)
 
-                   ))
-  )
+                   )))
+;; =============================================================================
+;; https://github.com/Turmolt/Advent-of-Code/blob/master/Clojure/2019/day6.clj
+(def input2
+  (->> active
+       string/split-lines
+       (map #(split #"\)" %))
+       (map (comp vec reverse))
+       (into {})))
 
+(defn build-chain [d k]
+  (take-while identity (rest (iterate d k))))
 
-(defn visited? [v coll] (some #(= % v) coll))
+(->> (keys input2)
+     (map (comp count (partial #(build-chain input2 %))))
+     (reduce +))
 
-(defn find-neighbors [v coll] (get coll v))
+(defn part-one []
+  (->> (keys input)
+       (map (comp count (partial #(build-chain input %))))
+       (reduce +)))
 
-(defn graph-dfs
-  "Traverses a graph in Depth First Search (DFS)"
-  [graph v]
-  (loop [stack   (vector v) ;; Use a stack to store nodes we need to explore
-         visited []]        ;; A vector to store the sequence of visited nodes
-    (if (empty? stack)      ;; Base case - return visited nodes if the stack is empty
-      visited
-      (let [v           (peek stack)
-            neighbors   (find-neighbors v graph)              ;; right branch first
-;            neighbors   (-> (find-neighbors graph v) reverse) ;; left branch first
-            not-visited (filter (complement #(visited? % visited)) neighbors)
-            new-stack   (into (pop stack) not-visited)]
-        (if (visited? v visited)
-          (recur new-stack visited)
-          (recur new-stack (conj visited v)))))))
-
-(defn graph-bfs
-  "Traverses a graph in Breadth First Search (BFS)."
-  [graph v]
-  (loop [queue   (conj clojure.lang.PersistentQueue/EMPTY v) ;; queue to store explored nodes
-         visited []]                                         ;; A vector of visited sequence
-    (if (empty? queue) visited                               ;; Base case - return visited nodes if the queue is empty
-        (let [v           (peek queue)
-              neighbors   (find-neighbors v graph)
-              not-visited (filter (complement #(visited? % visited)) neighbors)
-              new-queue   (apply conj (pop queue) not-visited)]
-          (if (visited? v visited)
-            (recur new-queue visited)
-            (recur new-queue (conj visited v)))))))
+(defn part-two []  
+  (let [y (build-chain input2 "YOU")
+        s (build-chain input2 "SAN")
+        i (clojure.set/intersection (set y) (set s))]
+    (->> i
+         (map #(+ (.indexOf y %) (.indexOf s %)))
+         (apply min))))
+;; =============================================================================
 
 
 
-(defn keys-in
-  "Returns a sequence of all key paths in a given map using DFS walk."
-  [m]
-  (letfn [(children [node]
-            (let [v (get-in m node)]
-              (if (map? v)
-                (map (fn [x] (conj node x)) (keys v))
-                [])))
-          (branch? [node] (-> (children node) seq boolean))]
-    (->> (keys m)
-         (map vector)
-         (mapcat #(tree-seq branch? children %)))))
 
-(keys-in input)
+;; =============================================================================
+;; kickopotomus from Aoc solution sub-reddit
+(defn ocount [g n]
+  (loop [c 0 cn n]
+    (if (= cn "COM")
+      c
+      (recur (inc c) (get g cn)))))
 
-(find-neighbors :G input)
+(defn part3 [data]
+  (let [orbits (string/split-lines data)
+        graph (reduce (fn [m o]
+                        (let [[p c] (string/split o #"\)")]
+                          (assoc m c p)))
+                      {}
+                      orbits)]
+    (reduce + (map #(ocount graph %) (keys graph)))))
+
+(part3 large)
+
+;; =============================================================================
 
 
-(graph-bfs input :COM)
 
-(let [obj1 "B"
-      obj2 "C"]
-  {(keyword obj1) [(keyword obj2)]})
+
+
 
 (defn part1 []
 
