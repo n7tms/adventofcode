@@ -26,22 +26,10 @@ I)SAN")
 (defn split [regex s]
   (string/split s regex))
 
-(defn parse-orbits [orbit]
-  (let [[_ obj1 obj2]
-        (re-matches #"(.+)\)(.+)" orbit)]
-    {(keyword obj1) [(keyword obj2)]}))
-
-
-(def input
-  (merge-with into
-              (->> active
-                   string/split-lines
-                   (map parse-orbits)
-
-                   )))
 ;; =============================================================================
+;; adopted from ...
 ;; https://github.com/Turmolt/Advent-of-Code/blob/master/Clojure/2019/day6.clj
-(def input2
+(def input
   (->> active
        string/split-lines
        (map #(split #"\)" %))
@@ -51,18 +39,15 @@ I)SAN")
 (defn build-chain [d k]
   (take-while identity (rest (iterate d k))))
 
-(->> (keys input2)
-     (map (comp count (partial #(build-chain input2 %))))
-     (reduce +))
-
-(defn part-one []
+(defn part1 []
   (->> (keys input)
        (map (comp count (partial #(build-chain input %))))
        (reduce +)))
 
-(defn part-two []  
-  (let [y (build-chain input2 "YOU")
-        s (build-chain input2 "SAN")
+
+(defn part2 []  
+  (let [y (build-chain input "YOU")
+        s (build-chain input "SAN")
         i (clojure.set/intersection (set y) (set s))]
     (->> i
          (map #(+ (.indexOf y %) (.indexOf s %)))
@@ -95,26 +80,14 @@ I)SAN")
 
 
 
+(defn bld-orbs [mp inp]
+  (let [[p c] (split #"\)" inp)] (assoc mp c p)))
+
+(let [orbits (string/split-lines active)
+      graph (bld-orbs {} orbits)]
+  (reduce + (map #(ocount graph %) (keys graph))))
+
+(+ 3 2)
 
 
-
-(defn part1 []
-
-  )
-
-
-
-
-(defn part2 []
-
-  )
-
-
-
-
-;(println "Part1: " (part1) "\nPart2: " (part2))
-
-
-
-
-
+(bld-orbs {} (string/split-lines active))
